@@ -248,23 +248,33 @@ document.getElementById('query-button').addEventListener('click', sendQuery)
 */
 
 // CODE HERE 
-const foodList = (food) => {
-    const list = document.createElement('div')
-    
-}
 
 
+
+const section = document.querySelector('section')
 
 const createFood = (event) => {
     event.preventDefault()
+
     const foodInput = document.querySelector('input')
+
     const body = {
         newFood: foodInput.value
     }
     axios.post('http://localhost:3000/food', body)
     .then(function(res){
         console.log(res.data)
-
+        const food = document.createElement('p')
+    
+        const foodName = document.createElement('span')
+        food.textContent = 'foodInput.value'
+        document.querySelector('section').appendChild(food)
+    
+        const list = document.createElement('ul')
+        list.appendChild(food)
+    
+    
+        foodInput.value = ''
     })
 
 }
